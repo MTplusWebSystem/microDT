@@ -46,8 +46,26 @@
             border-top-right-radius: 25px;
             border-end-end-radius: 25px;
         }
-        #ctry , #conf , #sendmsg{
+        #ctry , #conf , #sendmsg, .ctry{
             display: none;
+        }
+        .ctry{
+            position: fixed;
+       
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            top: 10%;
+            height: 70%;
+            width: 90%;
+
+        }
+        .nameStyle{
+            color: #e9e9e9;
+        }
+        .grupCategory{
+            display: flex;
+            flex-direction: column;
         }
         .menu button{
             background: none;
@@ -89,6 +107,17 @@
             height: 30%;
             width: 90%;
         }
+        #color-preview {
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
+    border: 1px solid #000;
+}
+
+.slider {
+    width: 80%;
+    margin: 10px auto;
+}
         .infos .msg{
             display: flex;
             flex-direction: row;
@@ -216,7 +245,32 @@
         </div>
         <div class="cardButtons">
             <button>Baixar Configurações</button>
+        </div>
+        <div class="ctry">
            
+             
+              <div class="grupCategory">
+                <div class="mb-3 row">
+                    <label for="inputPassword" class="col-sm-2 nameStyle">Nome</label>
+                    <div class="col-11 column-h">
+                      <input type="text" class="form-control" id="category">
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label for="inputPassword" class="col-sm-2 nameStyle">Ordem</label>
+                    <div class="col-9 column-h">
+                      <input type="text" class="form-control" id="category">
+                    </div>
+                  </div>
+                  <input type="text" id="hex-input" placeholder="Digite o código hexadecimal">
+        <div id="color-preview"></div>
+        <label for="red">Red:</label>
+        <input type="range" id="red" class="slider" min="0" max="255">
+        <label for="green">Green:</label>
+        <input type="range" id="green" class="slider" min="0" max="255">
+        <label for="blue">Blue:</label>
+        <input type="range" id="blue" class="slider" min="0" max="255">
+              </div>
         </div>
     </div>
     
