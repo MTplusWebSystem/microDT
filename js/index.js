@@ -1,13 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     class Render {
         open_vh(id, ht, wt) {
-            const show = new Show();
             const view = document.querySelector(id);
             if (view) {
-                const on = ["#ctry", "#conf","#sendmsg"];
-                const off = ["#start"];
-                show.enable(on);
-                show.disable(off)
                 view.style.transition = "0.3s";
                 view.style.height = ht;
                 view.style.width = wt;
@@ -52,18 +47,28 @@ document.addEventListener("DOMContentLoaded", function() {
             const eventClick = new Event();
             const render = new Render();
             const start = document.getElementById("start");
+            const menu = document.getElementById("_start");
             const creat_ctry = document.getElementById("ctry");
-            eventClick.click(start, () => render.open_vh("#home", "40vh", "60px"));
+            eventClick.click(start, () => {
+                render.open_vh("#home", "40vh", "60px")
+                const on = ["#ctry", "#conf","#sendmsg"];
+                const off = ["#start"];
+                show.disable(off)
+                show.enable(on);
+            });
 
             eventClick.click(creat_ctry, ()=> {
-                const off = [".infos",".notifications",".cardButtons",]
+                const off = [".infos",".notifications",".cardButtons","#ctry", "#conf","#sendmsg"]
+                const on = ["#_start",".ctry"]
+                render.open_vh("#home", "60px", "65px")
+                show.enable(on)
                 show.disable(off)
             })
-            eventClick.click(creat_ctry, () =>{
-                render.open_vh("#home", "60px", "65px")
-                const on = ["#start",".ctry"]
-                const off = ["#ctry", "#conf","#sendmsg"]
+            eventClick.click(menu, () =>{
+                render.open_vh("#home", "40vh", "65px")
+                const on = ["#start",".ctry","#ctry", "#conf","#sendmsg"]
                 show.enable(on)
+                const off = ["#_start"];
                 show.disable(off)
             });
         }

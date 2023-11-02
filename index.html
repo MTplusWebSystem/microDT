@@ -46,7 +46,7 @@
             border-top-right-radius: 25px;
             border-end-end-radius: 25px;
         }
-        #ctry , #conf , #sendmsg, .ctry{
+        #ctry , #conf , #sendmsg, #_start,.ctry{
             display: none;
         }
         .ctry{
@@ -108,16 +108,17 @@
             width: 90%;
         }
         #color-preview {
-    width: 100px;
-    height: 100px;
-    margin: 20px auto;
-    border: 1px solid #000;
-}
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            margin: 20px auto;
+            border: 1px solid #000;
+        }
 
-.slider {
-    width: 80%;
-    margin: 10px auto;
-}
+        .slider {
+           width: 80%;
+           margin: 10px auto;
+        }
         .infos .msg{
             display: flex;
             flex-direction: row;
@@ -127,6 +128,13 @@
             height: 70%;
             background-color: #121212;
             border-radius: 10px;
+        }
+        .colorGen{
+            margin-top: 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
         }
         .msg span{
             text-align: center;
@@ -202,6 +210,9 @@
 
     <div class="container">
         <nav class="menu" id="home">
+            <button id="_start">
+                <i class="fi fi-rr-home"></i>
+            </button>
             <button id="ctry">
                 <i class="fi fi-rr-book-alt"></i>
             </button>
@@ -258,11 +269,17 @@
                   </div>
                   <div class="mb-3 row">
                     <label for="inputPassword" class="col-sm-2 nameStyle">Ordem</label>
-                    <div class="col-9 column-h">
+                    <div class="col-11 column-h">
                       <input type="text" class="form-control" id="category">
                     </div>
                   </div>
-                  <input type="text" id="hex-input" placeholder="Digite o código hexadecimal">
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>Status</option>
+                    <option value="1">Ativado</option>
+                    <option value="2">Destivado</option>
+                  </select>
+                  <div class="colorGen">
+                    <input type="text" id="hex-input" placeholder="Digite o código hexadecimal">
                     <div id="color-preview"></div>
                     <label for="red">Red:</label>
                     <input type="range" id="red" class="slider" min="0" max="255">
@@ -270,6 +287,8 @@
                     <input type="range" id="green" class="slider" min="0" max="255">
                     <label for="blue">Blue:</label>
                     <input type="range" id="blue" class="slider" min="0" max="255">
+                  </div>
+                  
               </div>
         </div>
     </div>
