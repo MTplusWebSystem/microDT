@@ -70,35 +70,44 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     const hexInput = document.getElementById('hex-input');
-const redSlider = document.getElementById('red');
-const greenSlider = document.getElementById('green');
-const blueSlider = document.getElementById('blue');
-const colorPreview = document.getElementById('color-preview');
-
-function updateColor() {
-    const hexValue = hexInput.value;
-    const isValidHex = /^#[0-9A-Fa-f]{6}$/g.test(hexValue);
-    if (isValidHex) {
+    const redSlider = document.getElementById('red');
+    const greenSlider = document.getElementById('green');
+    const blueSlider = document.getElementById('blue');
+    const colorPreview = document.getElementById('color-preview');
+    
+    function updateColor() {
+        const red = redSlider.value;
+        const green = greenSlider.value;
+        const blue = blueSlider.value;
+        const hexValue = rgbToHex(red, green, blue);
         colorPreview.style.backgroundColor = hexValue;
-        const rgbValues = hexToRgb(hexValue);
-        redSlider.value = rgbValues.r;
-        greenSlider.value = rgbValues.g;
-        blueSlider.value = rgbValues.b;
+        hexInput.value = hexValue;
     }
-}
-
-function hexToRgb(hex) {
-    const bigint = parseInt(hex.slice(1), 16);
-    const r = (bigint >> 16) & 255;
-    const g = (bigint >> 8) & 255;
-    const b = bigint & 255;
-    return { r, g, b };
-}
-
-hexInput.addEventListener('input', updateColor);
-redSlider.addEventListener('input', updateColor);
-greenSlider.addEventListener('input', updateColor);
-blueSlider.addEventListener('input', updateColor);
-
+    
+    function componentToHex(c) {
+        const hex = c.toString(16);
+        return hex.length == 1 ? '0' + hex : hex;
+    }
+    
+    function rgbToHex(r, g, b) {
+        return '#' + componentToHex(r) + componentToHex(g) + componentToHex(b);
+    }
+    
+    hexInput.addEventListener('input', function() {
+        const hexValue = hexInput.value;
+        const isValidHex = /^#[0-9A-Fa-f]{6}$/g.test(hexValue);
+        if (isValidHex) {
+            const rgbValues = hexToRgb(hexValue);
+            redSlider.value = rgbValues.r;
+            greenSlider.value = rgbValues.g;
+            blueSlider.value = rgbValues.b;
+            colorPreview.style.backgroundColor = hexValue;
+        }
+    });
+    
+    redSlider.addEventListener('input', updateColor);
+    greenSlider.addEventListener('input', updateColor);
+    blueSlider.addEventListener('input', updateColor);
+    
     const Instance = new App();
 });
