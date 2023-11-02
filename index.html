@@ -46,7 +46,7 @@
             border-top-right-radius: 25px;
             border-end-end-radius: 25px;
         }
-        #ctry , #conf{
+        #ctry , #conf , #sendmsg{
             display: none;
         }
         .menu button{
@@ -66,6 +66,8 @@
             position: fixed;
             display: flex;
             flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
             top: 5%;
             background-color: #333;
             height: 65%;
@@ -83,6 +85,24 @@
             flex-direction: column;
             align-items: center;
         }
+        .infos .notifications{
+            height: 30%;
+            width: 90%;
+        }
+        .infos .msg{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 90%;
+            height: 70%;
+            background-color: #121212;
+            border-radius: 10px;
+        }
+        .msg span{
+            text-align: center;
+            color: #ffffff;
+        }
         .cardGrup{
             height: 60%;
             width: 100%;
@@ -92,13 +112,13 @@
             align-items: center;
         }
         .valueStyle{
-            background-color: #121212;
-            width: 70%;
             display: flex;
             flex-direction: row;
             justify-content: space-evenly;
             align-items: center;
+            width: 70%;
             height: 60%;
+            background-color: #121212;
             margin-top: 15%;
             border-radius: 10px;
         }
@@ -119,7 +139,20 @@
             border-radius: 5px;
             background: #ffffff;
         }
+        .cardButtons{
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            width: 90%;
+            top: 75%;
+        }
 
+        .cardButtons button{
+            border: none;
+            height: 35px;
+            width: 60%;
+            border-radius: 15px;
+        }
 
         @media screen and (min-width:420px) {
             .container{
@@ -149,6 +182,9 @@
             <button id="conf">
                 <i class="fi fi-rr-calendar-lines-pen"></i>
             </button>
+            <button id="sendmsg">
+                <i class="fi fi-rr-envelope"></i>
+            </button>
         </nav>
 
         <div class="infos">
@@ -170,9 +206,17 @@
                 </div>
             </div>
             
-            <div class="notifications">
-
+            <div class="notifications cardStyle">
+                <h3>Notificação</h3>
+                <div class=" msg  ">
+                    <span id="msg">Nova atualização <br> disponivel</span>
+                </div>
             </div>
+           
+        </div>
+        <div class="cardButtons">
+            <button>Baixar Configurações</button>
+           
         </div>
     </div>
     
