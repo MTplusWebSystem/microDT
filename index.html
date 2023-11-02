@@ -73,16 +73,51 @@
             border-radius: 5px;
         }
         .infos .cardStyle{
-            height: 60%;
-            width: 42%;
+            height: 40%;
+            width: 80%;
+            position: relative;
             background: #e9e9e9;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
         }
         .cardGrup{
             height: 60%;
             width: 100%;
             display: flex;
+            flex-direction: column;
             justify-content: space-evenly;
             align-items: center;
+        }
+        .valueStyle{
+            background-color: #121212;
+            width: 70%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 60%;
+            margin-top: 15%;
+            border-radius: 10px;
+        }
+        .cardGrup h2 {
+            color: yellow;
+        }
+        .cardGrup h3{
+            position: absolute;
+            top: 5px;
+        }
+        .cardGrup span{
+            height: 50px;
+            position: relative;
+            width: 60px;
+            display: flex;
+            justify-content: center;
+            font-size: 30px;
+            border-radius: 5px;
+            background: #ffffff;
         }
 
 
@@ -118,11 +153,20 @@
 
         <div class="infos">
             <div class="cardGrup">
+                <h2>Estatísticas</h2>
                 <div class="creat_ctry cardStyle">
-
+                    <h3>Categorias</h3>
+                    <div class="valueStyle">
+                        <h2>Total</h2>
+                        <span id="value_ctry">000</span>
+                    </div>
                 </div>
                 <div class="value_conf cardStyle">
-    
+                    <h3>Configurações</h3>
+                    <div class="valueStyle">
+                        <h2>Total</h2>
+                        <span id="value_ctry">000</span>
+                    </div>
                 </div>
             </div>
             
