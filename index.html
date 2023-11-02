@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroGen</title>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            background-color:#242424;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            flex-direction: column;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+        .menu{
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            right: 90%;
+            background: #d9d9d9;
+            height: 60px;
+            width: 65px;
+            z-index: 2;
+            border-top-right-radius: 25px;
+            border-end-end-radius: 25px;
+        }
+        #ctry , #conf{
+            display: none;
+        }
+        .menu button{
+            background: none;
+            display: flex;
+            position: relative;
+            left: 12px;
+            font-size: 25px;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            height: 100%;
+            width: 100%;
+            z-index: 5;
+        }
+        .infos{
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            top: 5%;
+            background-color: #333;
+            height: 65%;
+            width: 85%;
+            border-radius: 5px;
+        }
+        .infos .cardStyle{
+            height: 60%;
+            width: 42%;
+            background: #e9e9e9;
+        }
+        .cardGrup{
+            height: 60%;
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+
+        @media screen and (min-width:420px) {
+            .container{
+            background-color:#121212;
+            height: 720px;
+            width: 380px;
+            border-radius: 5px;
+        }
+        .menu{
+            right: 79%;
+        }
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <div class="container">
+        <nav class="menu" id="home">
+            <button id="ctry">
+                <i class="fi fi-rr-book-alt"></i>
+            </button>
+            <button id="start">
+                <i class="fi fi-rr-home"></i>
+            </button>
+            <button id="conf">
+                <i class="fi fi-rr-calendar-lines-pen"></i>
+            </button>
+        </nav>
+
+        <div class="infos">
+            <div class="cardGrup">
+                <div class="creat_ctry cardStyle">
+
+                </div>
+                <div class="value_conf cardStyle">
+    
+                </div>
+            </div>
+            
+            <div class="notifications">
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="./js/index.js"></script>
+</html>
