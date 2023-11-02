@@ -67,25 +67,23 @@ document.addEventListener("DOMContentLoaded", function() {
                 show.disable(off)
             });
         }
-    }
-
-    const hexInput = document.getElementById('hex-input');
+    }const hexInput = document.getElementById('hex-input');
     const redSlider = document.getElementById('red');
     const greenSlider = document.getElementById('green');
     const blueSlider = document.getElementById('blue');
     const colorPreview = document.getElementById('color-preview');
     
     function updateColor() {
-        const red = redSlider.value;
-        const green = greenSlider.value;
-        const blue = blueSlider.value;
+        const red = parseInt(redSlider.value);
+        const green = parseInt(greenSlider.value);
+        const blue = parseInt(blueSlider.value);
         const hexValue = rgbToHex(red, green, blue);
         colorPreview.style.backgroundColor = hexValue;
         hexInput.value = hexValue;
     }
     
     function componentToHex(c) {
-        const hex = c.toString(16);
+        const hex = c.toString(16).toUpperCase();
         return hex.length == 1 ? '0' + hex : hex;
     }
     
@@ -108,6 +106,8 @@ document.addEventListener("DOMContentLoaded", function() {
     redSlider.addEventListener('input', updateColor);
     greenSlider.addEventListener('input', updateColor);
     blueSlider.addEventListener('input', updateColor);
+    
+    
     
     const Instance = new App();
 });
