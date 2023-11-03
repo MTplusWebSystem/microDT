@@ -1,17 +1,17 @@
 document.addEventListener("DOMContentLoaded", function() {
-    class Render {
-        open_vh(id, ht, wt) {
+    class Renderer {
+        openVh(id, height, width) {
             const view = document.querySelector(id);
             if (view) {
                 view.style.transition = "0.3s";
-                view.style.height = ht;
-                view.style.width = wt;
+                view.style.height = height;
+                view.style.width = width;
                 return id;
             }
             return null;
         }
 
-        close_vh(id) {
+        closeVh(id) {
             const view = document.querySelector(id);
             if (view) {
                 view.style.transition = "0.6s";
@@ -22,20 +22,21 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    class Event {
-        click(id, callback) {
-            id.addEventListener("click", callback);
+    class EventManager {
+        click(element, callback) {
+            element.addEventListener("click", callback);
         }
     }
 
-    class Show {
-        enable(list) {
-            list.forEach(element => {
+    class VisibilityManager {
+        enable(elements) {
+            elements.forEach(element => {
                 document.querySelector(element).style.display = "flex";
             });
         }
-        disable (list) {
-            list.forEach(element => {
+
+        disable(elements) {
+            elements.forEach(element => {
                 document.querySelector(element).style.display = "none";
             });
         }
@@ -43,41 +44,54 @@ document.addEventListener("DOMContentLoaded", function() {
 
     class App {
         constructor() {
-            const show = new Show();
-            const eventClick = new Event();
-            const render = new Render();
-            const start = document.getElementById("start");
-            const menu = document.getElementById("_start");
-            const creat_ctry = document.getElementById("ctry");
-            eventClick.click(start, () => {
-                render.open_vh("#home", "40vh", "60px")
-                const on = ["#ctry", "#conf","#sendmsg"];
+            const visibilityManager = new VisibilityManager();
+            const eventManager = new EventManager();
+            const renderer = new Renderer();
+            const startButton = document.getElementById("start");
+            const menuButton = document.getElementById("_start");
+            const confView = document.getElementById("conf");
+            const createCountryButton = document.getElementById("ctry");
+
+            eventManager.click(startButton, () => {
+                renderer.openVh("#home", "40vh", "60px");
+                const on = ["#ctry", "#conf", "#sendmsg"];
                 const off = ["#start"];
-                show.disable(off)
-                show.enable(on);
+                visibilityManager.disable(off);
+                visibilityManager.enable(on);
             });
 
-            eventClick.click(creat_ctry, ()=> {
-                const off = [".infos",".notifications",".cardButtons","#ctry", "#conf","#sendmsg"]
-                const on = ["#_start",".ctry"]
-                render.open_vh("#home", "60px", "65px")
-                show.enable(on)
-                show.disable(off)
-            })
-            eventClick.click(menu, () =>{
-                render.open_vh("#home", "40vh", "65px")
-                const on = ["#start",".ctry","#ctry", "#conf","#sendmsg"]
-                show.enable(on)
-                const off = ["#_start"];
-                show.disable(off)
+            eventManager.click(createCountryButton, () => {
+                const off = [".infos", ".notifications", ".cardButtons",".conf", "#ctry", "#conf", "#sendmsg"];
+                const on = ["#_start", ".ctry"];
+                renderer.openVh("#home", "60px", "65px");
+                visibilityManager.enable(on);
+                visibilityManager.disable(off);
             });
+
+            eventManager.click(menuButton, () => {
+                renderer.openVh("#home", "40vh", "65px");
+                const on = [".ctry", "#ctry", "#conf", "#sendmsg"];
+                const off = ["#_start"];
+                visibilityManager.disable(off);
+                visibilityManager.enable(on);
+            });
+
+            eventManager.click(confView ,()=>{
+                const off = [".infos", ".notifications", ".cardButtons",".ctry","#ctry", "#conf", "#sendmsg"];
+                const on = ["#start",".conf"]
+                renderer.openVh("#home", "60px", "65px");
+                visibilityManager.disable(off);
+                visibilityManager.enable(on);
+            })
         }
-    }const hexInput = document.getElementById('hex-input');
+    }
+
+    const hexInput = document.getElementById('hex-input');
     const redSlider = document.getElementById('red');
     const greenSlider = document.getElementById('green');
     const blueSlider = document.getElementById('blue');
     const colorPreview = document.getElementById('color-preview');
-    
+
     function updateColor() {
         const red = parseInt(redSlider.value);
         const green = parseInt(greenSlider.value);
@@ -86,16 +100,16 @@ document.addEventListener("DOMContentLoaded", function() {
         colorPreview.style.backgroundColor = hexValue;
         hexInput.value = hexValue;
     }
-    
+
     function componentToHex(c) {
         const hex = c.toString(16).toUpperCase();
         return hex.length == 1 ? '0' + hex : hex;
     }
-    
+
     function rgbToHex(r, g, b) {
         return '#' + componentToHex(r) + componentToHex(g) + componentToHex(b);
     }
-    
+
     hexInput.addEventListener('input', function() {
         const hexValue = hexInput.value;
         const isValidHex = /^#[0-9A-Fa-f]{6}$/g.test(hexValue);
@@ -107,12 +121,10 @@ document.addEventListener("DOMContentLoaded", function() {
             colorPreview.style.backgroundColor = hexValue;
         }
     });
-    
+
     redSlider.addEventListener('input', updateColor);
     greenSlider.addEventListener('input', updateColor);
     blueSlider.addEventListener('input', updateColor);
-    
-    
-    
+
     const Instance = new App();
 });
