@@ -12,7 +12,7 @@
         <button>
             <i class="fi fi-rs-puzzle-piece"></i>
         </button>
-        <button>
+        <button id="creatConfig">
             <i class="fi fi-rs-link-alt"></i>
         </button>
         <button id="home">
@@ -73,8 +73,104 @@
     <div class="viewNotas alt-3 col-10 justify-center-vw">
         <div class="infoCard">
             <h4>Nota atual</h4>
-            <p> Nenhuma nota criada recentedknvjvnjevjnjrvnjervnjeravjejvrnjvrbjabjaevjjrv</p>
+            <p> Nenhuma nota criada recente</p>
         </div>
     </div>
+<div class="containerView">
+    <div class="viewConfig  col-10 justify-evenly-vh">
+        <div class="grup-vW justify-evenly-vw col-8">
+            <h4>Modos de conecxões</h4>
+            <select class="form-select"  >
+                <option value="1">DIRECT</option>
+                <option value="2">PROXY</option>
+                <option value="3">SSL</option>
+                <option value="4">PROXY</option>
+                <option value="5">OPENVPN PROXY</option>
+                <option value="6">OPENVPN SSL</option>
+                <option value="7">OPENVPN SSL + PROXY</option>
+                <option value="2">V2RAY</option>
+            </select>
+        </div>
+        <div class="grup-vw ">
+            <div class="grup-vH justify-evenly-vw">
+                <h4>Nome</h4>
+                <input type="text" class="col-9">
+            </div>
+            <div class="grup-vH justify-evenly-vw">
+                <h4>Descrição</h4>
+                <input type="text" class="col-9">
+            </div>
+        </div>
+        <div class="grup-vw ">
+            <div class="grup-vH justify-evenly-vw col-8">
+                <h4>Categorias</h4>
+                <select class="form-select col-7"  >
+                    <option value="1">VIVO</option>
+                    <option value="2">TIM</option>
+                    <option value="3">CLARO</option>
+                    <option value="4">OI</option>
+                   
+                </select>
+            </div>
+            <div class="grup-vH justify-evenly-vw">
+                <h4>Ordem</h4>
+                <input type="text" class="col-9">
+            </div>
+        </div>
+        <div class="grup-vH justify-evenly-vw col-9 payload ">
+            <h4>Payload</h4>
+            <textarea class="col-9" id="payload"rows="4"></textarea>
+        </div>
+        <div class="grup-vw ">
+            <div class="grup-vH justify-evenly-vw">
+                <h4>Servidor</h4>
+                <input type="text" class="col-9">
+            </div>
+            <div class="grup-vH justify-evenly-vw">
+                <h4>porta</h4>
+                <input type="text" class="col-7">
+            </div>
+        </div>
+        <div class="grup-vw ">
+            <div class="grup-vH justify-evenly-vw">
+                <h4>DNS 1</h4>
+                <input type="text" class="col-9">
+            </div>
+            <div class="grup-vH justify-evenly-vw">
+                <h4>DNS 2</h4>
+                <input type="text" class="col-9">
+            </div>
+        </div>
+        <div class="grup-vw ">
+            <div class="grup-vH justify-evenly-vw">
+                <h4>Usuário</h4>
+                <input type="text" class="col-9">
+            </div>
+            <div class="grup-vH justify-evenly-vw">
+                <h4>Senha</h4>
+                <input type="text" class="col-9">
+            </div>
+        </div>
+        <div class="grup-vh justify-evenly-vw col-9 payload ">
+            <div class="grup-vH justify-evenly-vw col-10">
+                <h4>Portas UDP</h4>
+                <input type="text" class="col-9">
+            </div>
+        </div>
+        <div class="grup-vh justify-evenly-vw col-9 payload ">
+            <div class="grup-vH justify-evenly-vw col-10">
+                <h4>Url do icone</h4>
+                <input type="text" class="col-9">
+            </div>
+        </div>
+        <div class="grup-vh justify-evenly-vw col-9 payload ">
+            <div class="grup-vH justify-evenly-vw col-10">
+                <h4>CheckUser</h4>
+                <input type="text" class="col-9">
+            </div>
+        </div>
+    </div>
+</div>
 </body>
+<script  src="./js/index.js"></script>
 </html>

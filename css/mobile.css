@@ -78,6 +78,41 @@
     font-weight: 400;
     line-height: normal; 
 }
+.containerView{
+    display: none ;
+    position: fixed;
+    top: 0;
+    height:90%;
+    overflow-y: scroll;
+    padding: 2.5%;
+}
+.viewConfig{
+    height: 150vh;
+}
+.viewConfig .grup-vw{
+    gap: 15px;
+}
+.viewConfig .payload{
+    height: 110px;
+}
+.grup-vH, .grup-vW{
+    text-align: left;
+    height: 60px;
+    background: rgba(0, 0, 0,0.6);
+    border-radius: 10px;
+    color: #ffffff;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;    
+}
+.grup-vH input, select{
+    text-align: center;
+    border-radius: 15px;
+    height: 25px;
+    border: none;
+}
 
 .viewNotas{
     position: fixed;
