@@ -9,7 +9,7 @@
 </head>
 <body class="justify-between-vh">
     <div class="navBar alt-1 col-10 justify-evenly-vw">
-        <button>
+        <button id="creatCategory">
             <i class="fi fi-rs-puzzle-piece"></i>
         </button>
         <button id="creatConfig">
@@ -169,6 +169,36 @@
                 <input type="text" class="col-9">
             </div>
         </div>
+    </div>
+    <div class="viewCategory col-10 justify-evenly-vh">
+       <div class="grup-vw justify-evenly-vw col-10">
+        <div class="grup-vH justify-evenly-vw col-5">
+            <h4>Categoria</h4>
+            <input type="text" class="col-9">
+        </div>
+        <div class="grup-vH justify-evenly-vw col-4">
+            <h4>Ordem</h4>
+            <input type="text" class="col-9">
+        </div>
+       </div>
+
+       <div class="grup-vH justify-evenly-vw col-8">
+                <h4>Status</h4>
+                <select class="form-select col-7"  >
+                    <option value="1">Ativado</option>
+                    <option value="2">Dessativado</option>
+                </select>
+        </div>
+        <div class="colorGen">
+            <input type="text" id="hex-input" placeholder="Digite o código hexadecimal">
+            <div id="color-preview"></div>
+            <label for="red">Red:</label>
+            <input type="range" id="red" class="slider" min="0" max="255">
+            <label for="green">Green:</label>
+            <input type="range" id="green" class="slider" min="0" max="255">
+            <label for="blue">Blue:</label>
+            <input type="range" id="blue" class="slider" min="0" max="255">
+          </div>
     </div>
 </div>
 </body>
