@@ -80,7 +80,7 @@
     <div class="viewConfig  col-10 justify-evenly-vh">
         <div class="grup-vW justify-evenly-vw col-8">
             <h4>Modos de conecxões</h4>
-            <select class="form-select"  >
+            <select class="form-select" id="_type" >
                 <option value="1">DIRECT</option>
                 <option value="2">PROXY</option>
                 <option value="3">SSL</option>
@@ -94,80 +94,77 @@
         <div class="grup-vw ">
             <div class="grup-vH justify-evenly-vw">
                 <h4>Nome</h4>
-                <input type="text" class="col-9">
+                <input type="text" id="name" class="col-9">
             </div>
             <div class="grup-vH justify-evenly-vw">
                 <h4>Descrição</h4>
-                <input type="text" class="col-9">
+                <input type="text" id="description" class="col-9">
             </div>
         </div>
         <div class="grup-vw ">
             <div class="grup-vH justify-evenly-vw col-8">
                 <h4>Categorias</h4>
-                <select class="form-select col-7"  >
-                    <option value="1">VIVO</option>
-                    <option value="2">TIM</option>
-                    <option value="3">CLARO</option>
-                    <option value="4">OI</option>
+                <select class="form-select col-7"  id="category">
                    
                 </select>
             </div>
             <div class="grup-vH justify-evenly-vw">
                 <h4>Ordem</h4>
-                <input type="text" class="col-9">
+                <input type="text" id="ordem" class="col-9">
             </div>
         </div>
         <div class="grup-vH justify-evenly-vw col-9 payload ">
             <h4>Payload</h4>
-            <textarea class="col-9" id="payload"rows="4"></textarea>
+            <textarea class="col-9" id="payload"rows="4" id="payload"></textarea>
         </div>
         <div class="grup-vw ">
             <div class="grup-vH justify-evenly-vw">
                 <h4>Servidor</h4>
-                <input type="text" class="col-9">
+                <input type="text" id="server" class="col-9">
             </div>
             <div class="grup-vH justify-evenly-vw">
                 <h4>porta</h4>
-                <input type="text" class="col-7">
+                <input type="text" id port class="col-7">
             </div>
         </div>
         <div class="grup-vw ">
             <div class="grup-vH justify-evenly-vw">
                 <h4>DNS 1</h4>
-                <input type="text" class="col-9">
+                <input type="text" id="dns1" class="col-9">
             </div>
             <div class="grup-vH justify-evenly-vw">
                 <h4>DNS 2</h4>
-                <input type="text" class="col-9">
+                <input type="text" id="dns2" class="col-9">
             </div>
         </div>
         <div class="grup-vw ">
             <div class="grup-vH justify-evenly-vw">
                 <h4>Usuário</h4>
-                <input type="text" class="col-9">
+                <input type="text" id="user" class="col-9">
             </div>
             <div class="grup-vH justify-evenly-vw">
                 <h4>Senha</h4>
-                <input type="text" class="col-9">
+                <input type="text" id="pass" class="col-9">
             </div>
         </div>
-        <div class="grup-vh justify-evenly-vw col-9 payload ">
-            <div class="grup-vH justify-evenly-vw col-10">
-                <h4>Portas UDP</h4>
-                <input type="text" class="col-9">
-            </div>
+        <div class="grup-vH justify-evenly-vw col-10">
+            <h4>V2RAY UUID</h4>
+            <input type="text" id="v2ray" class="col-9">
         </div>
-        <div class="grup-vh justify-evenly-vw col-9 payload ">
-            <div class="grup-vH justify-evenly-vw col-10">
-                <h4>Url do icone</h4>
-                <input type="text" class="col-9">
-            </div>
+        <div class="grup-vH justify-evenly-vw col-10">
+            <h4>Portas UDP</h4>
+            <input type="text" id="udp_ports" class="col-9">
         </div>
-        <div class="grup-vh justify-evenly-vw col-9 payload ">
-            <div class="grup-vH justify-evenly-vw col-10">
-                <h4>CheckUser</h4>
-                <input type="text" class="col-9">
-            </div>
+        <div class="grup-vH justify-evenly-vw col-10">
+            <h4>Link do icone</h4>
+            <input type="text" id="icon" class="col-9">
+        </div>
+        <div class="grup-vH justify-evenly-vw col-10">
+            <h4>CheckUser</h4>
+            <input type="text" id="checkuser" class="col-9" >
+        </div>     
+        <div class="grup-vH justify-evenly-vw col-5">
+            <button id="_SalveCategory" class=" col-8 alt-7 SalveConfig">Salvar</button>
         </div>
     </div>
     <div class="viewCategory col-10 justify-evenly-vh">
