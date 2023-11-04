@@ -174,17 +174,17 @@
        <div class="grup-vw justify-evenly-vw col-10">
         <div class="grup-vH justify-evenly-vw col-5">
             <h4>Categoria</h4>
-            <input type="text" class="col-9">
+            <input type="text" id="_categoryName" class="col-9">
         </div>
         <div class="grup-vH justify-evenly-vw col-4">
             <h4>Ordem</h4>
-            <input type="text" class="col-9">
+            <input type="text" id="_ordem" class="col-9">
         </div>
        </div>
 
        <div class="grup-vH justify-evenly-vw col-8">
                 <h4>Status</h4>
-                <select class="form-select col-7"  >
+                <select class="form-select col-7"  id="_status">
                     <option value="1">Ativado</option>
                     <option value="2">Dessativado</option>
                 </select>
@@ -198,7 +198,10 @@
             <input type="range" id="green" class="slider" min="0" max="255">
             <label for="blue">Blue:</label>
             <input type="range" id="blue" class="slider" min="0" max="255">
-          </div>
+        </div>
+        <div class="grup-vH justify-evenly-vw col-5">
+            <button id="_SalveCategory" class=" col-8 alt-7 SalveCategory">Salvar</button>
+        </div>
     </div>
 </div>
 </body>

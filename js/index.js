@@ -1,11 +1,67 @@
 document.addEventListener("DOMContentLoaded", function() {
-    class EventManager {
 
-        click(element, callback) {
-            element.addEventListener("click", callback);
+    class System {
+        constructor() {
+            this.initialize();
+        }
+    
+        async initialize() {
+            var data = await this.Data(); 
+            this.auth = {
+                "password": null,
+                "username": null,
+                "v2ray_uuid": null
+            }
+            this.category = {
+                "color": "#77BB1CD4",
+                "created_at": data,
+                "id": 3281,
+                "name": "VIVO",
+                "sorter": 1,
+                "status": "ACTIVE",
+                "updated_at": data,
+                "user_id": "961c3094-020a-486f-927e-b2bb4aec4871"
+            }
+    
+            console.log(this.category);
+        }
+    
+        async Data() {
+            var dataHoraAtual = new Date();
+            var ano = dataHoraAtual.getFullYear();
+            var mes = dataHoraAtual.getMonth() + 1;
+            var dia = dataHoraAtual.getDate();
+            var horas = dataHoraAtual.getHours();
+            var minutos = dataHoraAtual.getMinutes();
+            var segundos = dataHoraAtual.getSeconds();
+    
+            var data = ano + "-" + mes + "-" + dia + " " + horas + ":" + minutos + ":" + segundos;
+            return data;
+        }
+    
+        ValueCategory(color, ordem, nome, status) {
+            const callback = status;
+            const ColorIten = document.querySelector(color).value;
+            const OrdemIten = document.querySelector(ordem).value;
+            const ItenName = document.querySelector(nome).value;
+            
+            console.log(callback,ColorIten,OrdemIten,ItenName)
         }
     }
     
+    class EventManager {
+        click(element, callback) {
+            element.addEventListener("click", callback);
+        }
+    
+        select(id) {
+            var select = document.querySelector(id);
+            var valorSelecionado = select.value;
+            console.log("Valor selecionado: " + valorSelecionado);
+            return valorSelecionado;
+        }
+    }
+
     class VisibilityManager {
         enable(elements) {
             elements.forEach(element => {
@@ -28,21 +84,29 @@ document.addEventListener("DOMContentLoaded", function() {
 
     class APP {
         constructor() {
+            const system = new System()
             const eventManager = new EventManager();
             const visibilityManager = new VisibilityManager();
             const conf = document.querySelector("#creatConfig");
             const category = document.querySelector("#creatCategory");
+
             eventManager.click(conf, () => {
                 const offView = [".itensCard",".viewVersion",".viewNotas",".viewCategory"];
                 const onView =[".viewConfig",".containerView"]
                 visibilityManager.disable(offView);
                 visibilityManager.enable(onView)
             });
+
             eventManager.click(category, () => {
                 const offView = [".itensCard",".viewVersion",".viewNotas",".viewConfig"];
                 const onView =[".containerView",".viewCategory"]
                 visibilityManager.disable(offView);
                 visibilityManager.enable(onView)
+            });
+
+            eventManager.click(document.getElementById("_SalveCategory"), function() {
+                var valorSelecionado = eventManager.select("#_status");
+                system.ValueCategory("#hex-input", "#_ordem", "#_categoryName", valorSelecionado);
             });
         }
         
