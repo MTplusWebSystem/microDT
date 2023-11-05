@@ -1,6 +1,69 @@
 document.addEventListener("DOMContentLoaded", function() {
     let autoId = 1000;
     let autoCategory = 0;
+
+
+    class Render{
+        
+        card (name, category) {
+            const cardContainer = document.querySelector(".viewList"); 
+
+            const card = document.createElement("div");
+            card.classList.add("justify-evenly-vw", "config", "col-9");
+            
+            const editView = document.createElement("div");
+            editView.classList.add("editView", "col-8", "justify-evenly-vw");
+            
+            const editButton = document.createElement("button");
+            const editIcon = document.createElement("i");
+            editIcon.classList.add("fi", "fi-rs-edit-alt");
+            editButton.appendChild(editIcon);
+            editView.appendChild(editButton);
+            
+            const duplicateButton = document.createElement("button");
+            const duplicateIcon = document.createElement("i");
+            duplicateIcon.classList.add("fi", "fi-rs-duplicate");
+            duplicateButton.appendChild(duplicateIcon);
+            editView.appendChild(duplicateButton);
+            
+            const deleteButton = document.createElement("button");
+            const deleteIcon = document.createElement("i");
+            deleteIcon.classList.add("fi", "fi-rs-trash");
+            deleteButton.appendChild(deleteIcon);
+            editView.appendChild(deleteButton);
+            
+            const wifiButton = document.createElement("button");
+            const wifiIcon = document.createElement("i");
+            wifiIcon.classList.add("fi", "fi-rs-wifi-exclamation");
+            wifiButton.appendChild(wifiIcon);
+            editView.appendChild(wifiButton);
+            
+            const nameGroup = document.createElement("div");
+            nameGroup.classList.add("grup-vH", "justify-evenly-vw", "col-4");
+            const nameHeading = document.createElement("h4");
+            nameHeading.textContent = "Nome";
+            const nameSpan = document.createElement("span");
+            nameSpan.textContent = name
+            nameGroup.appendChild(nameHeading);
+            nameGroup.appendChild(nameSpan);
+            
+            const categoryGroup = document.createElement("div");
+            categoryGroup.classList.add("grup-vH", "justify-evenly-vw", "col-4");
+            const categoryHeading = document.createElement("h4");
+            categoryHeading.textContent = "Categoria";
+            const categorySpan = document.createElement("span");
+            categorySpan.textContent = category
+            categoryGroup.appendChild(categoryHeading);
+            categoryGroup.appendChild(categorySpan);
+            
+            card.appendChild(editView);
+            card.appendChild(nameGroup);
+            card.appendChild(categoryGroup);
+            
+            cardContainer.appendChild(card);
+            
+        }
+    }
     class System {
         Data() {
             const dataHoraAtual = new Date();
@@ -91,23 +154,41 @@ document.addEventListener("DOMContentLoaded", function() {
 
     class APP {
         constructor() {
+            const render = new Render();
             const system = new System();
             const eventManager = new EventManager();
             const visibilityManager = new VisibilityManager();
             const conf = document.querySelector("#creatConfig");
             const category = document.querySelector("#creatCategory");
+            const viewList = document.querySelector("#viewList");
+            const saveCategory = document.querySelector("#_SalveCategory");
+            const saveConfig = document.querySelector("#_SalveConfig")
 
             eventManager.click(conf, () => {
-                visibilityManager.disable([".itensCard", ".viewVersion", ".viewNotas", ".viewCategory"]);
+                visibilityManager.disable([".itensCard", ".viewVersion", ".viewNotas", ".viewCategory",".viewList"]);
                 visibilityManager.enable([".viewConfig", ".containerView"]);
             });
 
             eventManager.click(category, () => {
-                visibilityManager.disable([".itensCard", ".viewVersion", ".viewNotas", ".viewConfig"]);
+                visibilityManager.disable([".itensCard", ".viewVersion", ".viewNotas", ".viewConfig",".viewList"]);
                 visibilityManager.enable([".containerView", ".viewCategory"]);
+                
             });
 
-            eventManager.click(document.querySelector("#_SalveCategory"), function() {
+            eventManager.click(viewList, () => {
+                visibilityManager.disable([".itensCard", ".viewVersion", ".viewNotas", ".viewConfig",".viewCategory"]);
+                visibilityManager.enable([".containerView", ".viewList"]);
+                
+            });
+            
+            eventManager.click(saveCategory, ()=> {
+                const valorSelecionado = eventManager.select("#_status");
+                const category = valorSelecionado == 1 ? system.ValueCategory("#hex-input", "#_ordem", "#_categoryName", "ACTIVE") : null;
+                const categoryData = category ? system.category(category) : null;
+                console.log(category)
+            })
+
+            eventManager.click(saveConfig, function() {
                 const valorSelecionado = eventManager.select("#_status");
                 const type = eventManager.select("#_type");
                 var payload =  document.getElementById("payload").value;
@@ -115,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 var dns1 =  document.getElementById("dns1").value;
                 var dns2 =  document.getElementById("dns2").value;
                 var icon =  document.getElementById("icon").value;
-                var name =  document.getElementById("name").value;
+                var nome =  document.getElementById("name").value;
                 var server =  document.getElementById("server").value;
                 var udp_ports =  document.getElementById("udp_ports").value;
                 var checkuser = document.getElementById("checkuser").value;
@@ -146,7 +227,7 @@ document.addEventListener("DOMContentLoaded", function() {
                          "icon":icon,
                          "id":autoId,
                          "mode":"SSH_PROXY",
-                         "name":name,
+                         "name":nome,
                          "proxy":{
                             "host":server,
                             "port":port
@@ -163,6 +244,9 @@ document.addEventListener("DOMContentLoaded", function() {
                          "url_check_user":checkuser,
                          "user_id":"961c3094-020a-486f-927e-b2bb4aec4871"                       
                     }
+                    
+                    const category = document.querySelector("#_categoryName").value;
+                    render.card(nome,category)
                     console.log(ssh_proxy)
                 }
                 

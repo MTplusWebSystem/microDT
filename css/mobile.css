@@ -83,6 +83,7 @@
     position: fixed;
     top: 0;
     height:90%;
+    width:100%;
     overflow-y: scroll;
     padding: 2.5%;
 }
@@ -128,7 +129,9 @@
     height: 25px;
     border: none;
 }
-
+.viewList{
+    position: relative;
+}
 .viewNotas{
     position: fixed;
     top: 55%;
@@ -146,4 +149,29 @@
 }
 .SalveCategory{
     font-size: 25px;
+}
+
+.config{
+    position: relative;
+    background: rgba(0, 0, 0,0.6);
+    border-radius: 10px;
+}
+.editView{
+    position: absolute;
+    top: -85%;
+    background-color: #0084ff;
+    height: 50px;
+    border-radius: 25px;
+}
+
+.editView button{
+    height: 35px;
+    width: 35px;
+    border-radius: 15px;
+    background-color: #ffffff;
+    border: none;
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
 }
