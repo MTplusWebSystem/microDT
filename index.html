@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>microDT</title>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-straight/css/uicons-regular-straight.css'>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body class="justify-between-vh">
+    <div class="navBar alt-1 col-10 justify-evenly-vw">
+        <button id="creatCategory">
+            <i class="fi fi-rs-puzzle-piece"></i>
+        </button>
+        <button id="createConfig">
+            <i class="fi fi-rs-link-alt"></i>
+        </button>
+        <button id="home">
+            <i class="fi fi-rs-home"></i>
+        </button>
+        <button id="viewList">
+            <i class="fi fi-rs-ballot"></i>
+        </button>
+        <button id="download">
+            <i class="fi fi-rs-download"></i>
+        </button>
+    </div>
+    <div class="cardStatus alt-5 col-9 justify-evenly-vh">
+        <div class="viewVersion">
+            versão: 0.0.1
+        </div>
+        <div class="grup-vw justify-between-vw itensCard col-10">
+            <div class="elementCard justify-evenly-vh">
+                <div class="tegImg justify-center-vw">
+                    <i class="fi fi-rs-puzzle-piece"></i>
+                </div>
+                <div class="viewCard" id="card_category">
+                    000
+                </div>
+                <h4>Categorias</h4>
+            </div>
+            <div class="elementCard justify-evenly-vh ">
+                <div class="tegImg justify-center-vw">
+                    <i class="fi fi-rs-link-alt"></i>
+                </div>
+                <div class="viewCard" id="card_payload">
+                    000
+                </div>
+                <h4>Payloads</h4>
+            </div>
+        </div>
+        <div class="grup-vw justify-between-vw itensCard col-10" >
+            <div class="elementCard justify-evenly-vh ">
+                <div class="tegImg justify-center-vw">
+                    <i class="fi fi-rs-print"></i>
+                </div>
+                <div class="viewCard">
+                    000
+                </div>
+                <h4>Notas</h4>
+            </div>
+            <div class="elementCard justify-evenly-vh ">
+                <div class="tegImg justify-center-vw">
+                    <i class="fi fi-rs-wifi-exclamation"></i>
+                </div>
+                <div class="viewCard" id="card_offline">
+                    000
+                </div>
+                <h4>Offlines</h4>
+            </div>
+        </div>
+    </div>
+    <div class="viewNotas alt-3 col-10 justify-center-vw">
+        <div class="infoCard">
+            <h4>Nota atual</h4>
+            <p> Nenhuma nota criada recente</p>
+        </div>
+    </div>
+<div class="containerView" style="display: none;">
+    <div class="viewConfig  col-10 justify-evenly-vh">
+        <div class="configCard">
+            
+        </div>
+    </div>
+    <div class="viewCategory col-10 justify-evenly-vh">
+       <div class="grup-vw justify-evenly-vw col-10">
+        <div class="grup-vH justify-evenly-vw col-5">
+            <h4>Categoria</h4>
+            <input type="text" id="_categoryName" class="col-9">
+        </div>
+        <div class="grup-vH justify-evenly-vw col-4">
+            <h4>Ordem</h4>
+            <input type="text" id="_ordem" class="col-9">
+        </div>
+       </div>
+
+       <div class="grup-vH justify-evenly-vw col-8">
+                <h4>Status</h4>
+                <select class="form-select col-7"  id="_status">
+                    <option value="1">Ativado</option>
+                    <option value="2">Dessativado</option>
+                </select>
+        </div>
+        <div class="colorGen">
+            <input type="text" id="hex-input" placeholder="Digite o código hexadecimal">
+            <div id="color-preview"></div>
+            <label for="red">Red:</label>
+            <input type="range" id="red" class="slider" min="0" max="255">
+            <label for="green">Green:</label>
+            <input type="range" id="green" class="slider" min="0" max="255">
+            <label for="blue">Blue:</label>
+            <input type="range" id="blue" class="slider" min="0" max="255">
+        </div>
+        <div class="grup-vH justify-evenly-vw col-5">
+            <button id="_SalveCategory" class=" col-8 alt-7 SalveCategory">Salvar</button>
+        </div>
+    </div>
+    <div class="viewList  justify-evenly-vh  col-10">
+        
+    </div>
+    <textarea id="confiNone" style="display: none;"></textarea>
+</div>
+</body>
+<script  src="./js/index.js"></script>
+</html>

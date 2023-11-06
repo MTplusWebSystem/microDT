@@ -1,0 +1,13 @@
+<div class="grup-vW justify-evenly-vw col-8">
+            <h4>Modos de conecxões</h4>
+            <select class="form-select" id="_type" >
+                <option value="1">DIRECT</option>
+                <option value="2">PROXY</option>
+                <option value="3">SSL</option>
+                <option value="4">PROXY</option>
+                <option value="5">OPENVPN PROXY</option>
+                <option value="6">OPENVPN SSL</option>
+                <option value="7">OPENVPN SSL + PROXY</option>
+                <option value="8">V2RAY</option>
+            </select>
+        </div>
