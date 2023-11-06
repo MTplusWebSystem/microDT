@@ -1,16 +1,26 @@
 document.addEventListener("DOMContentLoaded", function() {
     let autoId = 1000;
     let autoCategory = 0;
-
+    let listas = {
+        category:[],
+        nameID:[],
+        delete:[]
+    }
+    let listView ={
+        category : 0,
+        payload:0,
+        offline:0,
+    }
+    let Config = ["zero"]
 
     class Render{
         
-        card (name, category) {
+        card (name, chave, category) {
             const cardContainer = document.querySelector(".viewList"); 
 
             const card = document.createElement("div");
-            card.classList.add("justify-evenly-vw", "config", "col-9");
-            
+            card.classList.add( 'justify-evenly-vw', 'config', 'col-9');
+            card.id = chave
             const editView = document.createElement("div");
             editView.classList.add("editView", "col-8", "justify-evenly-vw");
             
@@ -132,6 +142,9 @@ document.addEventListener("DOMContentLoaded", function() {
             const select = document.querySelector(id);
             return select ? select.value : null;
         }
+        delete(id){
+
+        }
     }
 
     class VisibilityManager {
@@ -159,6 +172,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const eventManager = new EventManager();
             const visibilityManager = new VisibilityManager();
             const conf = document.querySelector("#creatConfig");
+            const home = document.querySelector("#home");
             const category = document.querySelector("#creatCategory");
             const viewList = document.querySelector("#viewList");
             const saveCategory = document.querySelector("#_SalveCategory");
@@ -180,16 +194,64 @@ document.addEventListener("DOMContentLoaded", function() {
                 visibilityManager.enable([".containerView", ".viewList"]);
                 
             });
-            
+            eventManager.click(home,()=>{
+                visibilityManager.disable([,".containerView"]);
+                visibilityManager.enable([".itensCard", ".viewVersion", ".viewNotas", ".viewConfig",".viewCategory"]);
+            })
+            function getRandomInt(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min)) + min;
+              }
             eventManager.click(saveCategory, ()=> {
+                const categoria = document.getElementById('card_category')
                 const valorSelecionado = eventManager.select("#_status");
                 const category = valorSelecionado == 1 ? system.ValueCategory("#hex-input", "#_ordem", "#_categoryName", "ACTIVE") : null;
-                const categoryData = category ? system.category(category) : null;
-                console.log(category)
+                const savedCategoryData = category ? system.category(category) : null;
+                listas.category.push(savedCategoryData)
+                listView.category++; 
+                console.log(listas)
+                const valor = listView.category;
+                if (valor <= 9) {
+                    categoria.textContent = "00" + valor;
+                } else if (valor <= 99) {
+                    categoria.textContent = "0" + valor;
+                } else {
+                    categoria.textContent = valor;
+                }
+                
             })
 
             eventManager.click(saveConfig, function() {
-                const valorSelecionado = eventManager.select("#_status");
+                const categoria = document.getElementById('card_payload')
+                const selectValor = document.getElementById("category").value
+                
+                console.log(selectValor)
+                listView.payload++; 
+                
+                const valor = listView.payload;
+                if (valor <= 9) {
+                    categoria.textContent = "00" + valor;
+                } else if (valor <= 99) {
+                    categoria.textContent = "0" + valor;
+                } else {
+                    categoria.textContent = valor;
+                }
+                function getRandomInt(min, max) {
+                    min = Math.ceil(min);
+                    max = Math.floor(max);
+                    return Math.floor(Math.random() * (max - min + 1)) + min;
+                  }
+                  
+                  const numeros = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+                  const randomI= getRandomInt(0, numeros.length - 1);
+                  const randomII= getRandomInt(0, numeros.length - 1);
+                  const randomIII= getRandomInt(0, numeros.length - 1);
+                  const n = numeros[randomI];
+                  const n2 = numeros[randomII];
+                  const n3 = numeros[randomII];
+                  
+                  
                 const type = eventManager.select("#_type");
                 var payload =  document.getElementById("payload").value;
                 var description =  document.getElementById("description").value;
@@ -205,10 +267,60 @@ document.addEventListener("DOMContentLoaded", function() {
                 const user = document.getElementById("user").value;
                 const pass = document.getElementById("pass").value;
                 const v2ray = document.getElementById("v2ray").value;
-                const category = valorSelecionado == 1 ? system.ValueCategory("#hex-input", "#_ordem", "#_categoryName", "ACTIVE") : null;
+                let chave = n+n2+n3
+                const nameOrdem = {
+                    name: nome,
+                    id: system.Data()
+                }
+                listas.nameID.push(nameOrdem)
+                console.log(listas.nameID)
+                const categoryData = listas.category[selectValor]
+                console.log(nameOrdem)
                 const auth = system.auth(user, pass, v2ray);
-                const categoryData = category ? system.category(category) : null;
-                if (type == 2) {
+                if (type == 1) {
+                    var ssh_direct ={
+                        "auth":auth,
+                        "category":categoryData,
+                        "category_id":autoId,
+                        "config_openvpn":null,
+                        "config_payload":{
+                           "payload":payload,
+                           "sni":null
+                        },
+                        "config_v2ray":null,
+                        "created_at":system.Data(),
+                        "description":null,
+                        "dns_server":{
+                           "dns1":dns1,
+                           "dns2":dns2
+                        },
+                        "icon":icon,
+                        "id":113438,
+                        "mode":"SSH_DIRECT",
+                        "name":nome,
+                        "proxy":{
+                           "host":null,
+                           "port":null
+                        },
+                        "server":{
+                           "host":server,
+                           "port":port
+                        },
+                        "sorter":ordem,
+                        "status":"ACTIVE",
+                        "tls_version":"TLSv1.2",
+                        "udp_ports":[
+                            udp_ports
+                        ],
+                        "updated_at":system.Data(),
+                        "url_check_user":checkuser,
+                        "user_id":"9bc2f4c4-8916-42f7-9065-0a907e806ed6"
+                     }
+                    const category = document.querySelector("#_categoryName").value;
+                    render.card(nome,system.Data(),category)
+                    console.log(ssh_direct)
+                }
+                else if (type == 2) {
                     var ssh_proxy = {
                         "auth":auth,
                         "category":categoryData,
@@ -218,7 +330,9 @@ document.addEventListener("DOMContentLoaded", function() {
                             "payload":payload,
                             "sni":null
                          },
-                         "config_v2ray":null,
+                        "config_v2ray":null,
+                        "created_at":system.Data(),
+                        "description":null,
                          "description":description,
                          "dns_server":{
                             "dns1":dns1,
@@ -240,15 +354,58 @@ document.addEventListener("DOMContentLoaded", function() {
                          "status":"ACTIVE",
                          "tls_version":"TLSv1.2",  
                          "udp_ports":[udp_ports],
-                         "updated_at":"2023-08-05 14:38:39",
+                         "updated_at":system.Data(),
                          "url_check_user":checkuser,
                          "user_id":"961c3094-020a-486f-927e-b2bb4aec4871"                       
                     }
                     
                     const category = document.querySelector("#_categoryName").value;
-                    render.card(nome,category)
+                    render.card(nome,system.Data(),category)
                     console.log(ssh_proxy)
+                } else if ( type == 8){
+                    var vIIray = {
+                        "auth":auth,
+                        "category":categoryData,
+                        "category_id":autoId,
+                        "config_openvpn":null,
+                        "config_payload":{
+                           "payload":null,
+                           "sni":null
+                        },
+                        "config_v2ray":v2ray,
+                        "created_at":system.Data(),
+                        "description":description,
+                        "dns_server":{
+                           "dns1":dns1,
+                           "dns2":dns2
+                        },
+                        "icon":icon,
+                        "id":autoId,
+                        "mode":"V2RAY",
+                        "name":nome,
+                        "proxy":{
+                           "host":null,
+                           "port":null
+                        },
+                        "server":{
+                           "host":null,
+                           "port":null
+                        },
+                        "sorter":ordem,
+                        "status":"ACTIVE",
+                        "tls_version":"TLSv1.2",
+                        "udp_ports":[
+                           
+                        ],
+                        "updated_at":"2023-09-28 23:57:52",
+                        "url_check_user":checkuser,
+                        "user_id":"9bc2f4c4-8916-42f7-9065-0a907e806ed6"
+                     }
+                    const category = document.querySelector("#_categoryName").value;
+                    render.card(nome,system.Data(),category)
+                    console.log(vIIray)
                 }
+
                 
             });
         }
