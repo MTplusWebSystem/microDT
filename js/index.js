@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let autoId = 1000;
     let autoCategory = 0;
     let listas = {
-        category:[],
+        category:["zero"],
         nameID:[],
         delete:[]
     }
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
         payload:0,
         offline:0,
     }
-    let Config = ["zero"]
+    let Config = []
 
     class Render{
         
@@ -173,6 +173,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const visibilityManager = new VisibilityManager();
             const conf = document.querySelector("#creatConfig");
             const home = document.querySelector("#home");
+            const down = document.querySelector("#download")
             const category = document.querySelector("#creatCategory");
             const viewList = document.querySelector("#viewList");
             const saveCategory = document.querySelector("#_SalveCategory");
@@ -194,6 +195,19 @@ document.addEventListener("DOMContentLoaded", function() {
                 visibilityManager.enable([".containerView", ".viewList"]);
                 
             });
+            const Arquivo = "config.json"
+            eventManager.click(down, () => {
+                const jsonContent = JSON.stringify(Config, null, 2); 
+                const blob = new Blob([jsonContent], { type: 'application/json' }); 
+                const url = window.URL.createObjectURL(blob); 
+                const link = document.createElement('a'); 
+                link.href = url; 
+                link.download = Arquivo; 
+                document.body.appendChild(link); 
+                link.click(); 
+                document.body.removeChild(link); 
+            });
+            
             eventManager.click(home,()=>{
                 visibilityManager.disable([,".containerView"]);
                 visibilityManager.enable([".itensCard", ".viewVersion", ".viewNotas", ".viewConfig",".viewCategory"]);
@@ -319,6 +333,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     const category = document.querySelector("#_categoryName").value;
                     render.card(nome,system.Data(),category)
                     console.log(ssh_direct)
+                    Config.push(ssh_direct)
+
                 }
                 else if (type == 2) {
                     var ssh_proxy = {
@@ -362,6 +378,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     const category = document.querySelector("#_categoryName").value;
                     render.card(nome,system.Data(),category)
                     console.log(ssh_proxy)
+                    Config.push(ssh_proxy)
+
                 } else if ( type == 8){
                     var vIIray = {
                         "auth":auth,
@@ -404,6 +422,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     const category = document.querySelector("#_categoryName").value;
                     render.card(nome,system.Data(),category)
                     console.log(vIIray)
+                    Config.push(vIIray)
+                    
                 }
 
                 
